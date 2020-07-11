@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRatingsTable extends Migration
+class CreateSpiritTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,18 @@ class CreateRatingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('ratings', function (Blueprint $table) {
+        Schema::create('spirit_types', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->timestamps();
+        });
+
+        Schema::create('spirit_type_assignments', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('spirit_id')->unsigned();
             $table->foreign('spirit_id')->references('id')->on('spirits');
-            $table->string('rating')->nullable();
-            $table->longText('review')->nullable();
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('spirit_type_id')->unsigned();
+            $table->foreign('spirit_type_id')->references('id')->on('spirit_types');
             $table->timestamps();
         });
     }
@@ -32,6 +36,7 @@ class CreateRatingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ratings');
+        Schema::dropIfExists('spirit_type_assignments');
+        Schema::dropIfExists('spirit_types');
     }
 }

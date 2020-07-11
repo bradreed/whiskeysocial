@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateWhiskeysTable extends Migration
+class CreateWishlistTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class CreateWhiskeysTable extends Migration
      */
     public function up()
     {
-        Schema::create('whiskeys', function (Blueprint $table) {
+        Schema::create('wishlist', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('spirit_id')->unsigned();
+            $table->foreign('spirit_id')->references('id')->on('spirits');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class CreateWhiskeysTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('whiskeys');
+        Schema::dropIfExists('wishlist');
     }
 }

@@ -7,79 +7,45 @@ use Illuminate\Http\Request;
 
 class DistillerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
+  public function get_distillers(Request $request)
+  {
+    $distillers = Distiller::all();
+    if($distillers){
+        return response()->json(["distillers" => $distillers], 200);
+    }else{
+        return response()->json(["message" => "An error occured."], 404);
     }
+  }
+  
+  public function get_distiller($id)
+  {
+    $distiller = Distiller::where('id',$id)->first();
+    if($distiller){
+        return response()->json(["distiller" => $distiller], 200);
+    }else{
+        return response()->json(["message" => "Distiller not found."], 404);
+    }
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+  public function create_distiller(Request $request)
+  {
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+  }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Distiller  $distiller
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Distiller $distiller)
-    {
-        //
-    }
+  public function update_distiller(Request $request, $id)
+  {
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Distiller  $distiller
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Distiller $distiller)
-    {
-        //
-    }
+  }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Distiller  $distiller
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Distiller $distiller)
-    {
-        //
+  public function delete_distiller(Request $request, $id)
+  {
+    $distiller = Distiller::where('id',$id)->first();
+    if($distiller){
+        $distiller->delete();
+        return response()->json(["message" => "Distiller successfully deleted."], 404);
+    }else{
+        return response()->json(["message" => "Distiller not found."], 404);
     }
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Distiller  $distiller
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Distiller $distiller)
-    {
-        //
-    }
 }

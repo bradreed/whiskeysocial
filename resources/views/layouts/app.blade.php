@@ -75,6 +75,40 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <footer>
+            <hr>
+            <div class="container">
+                <div class="row ">
+                    <div class="col-md-4">
+                        <p>Normally, both your asses would be dead as fucking fried chicken, but you happen to pull this shit while I'm in a transitional period so I don't wanna kill you, I wanna help you. But I can't give you this case, it don't belong to me. Besides, I've already been through too much shit this morning over this case to hand it over to your dumb ass.</p>
+                    </div>
+                    <div class="col-md-8">
+                        <ul class="nav justify-content-end">
+                          <li class="nav-item">
+                            <a class="nav-link active" href="#">Active</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Link</a>
+                          </li>
+                          <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                          </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-12">
+                        <p class="text-center">&copy; 2020 All rights reserved.</p> 
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

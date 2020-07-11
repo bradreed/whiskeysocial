@@ -17,4 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'PageController@dashboard')->name('dashboard');
+Route::get('/discover', 'PageController@discover')->name('discover');
+Route::get('/discover/whiskey', 'PageController@discoverSpirit');
+Route::get('/discover/whiskey/{id}', 'PageController@discoverSingleSpirit');
+Route::get('/contribute', 'PageController@contribute')->name('contribute');
+Route::get('/contribute/spirit', 'PageController@contributeSpirit')->name('contributeSpirit');
+Route::get('/contribute/distiller', 'PageController@contributeDistiller')->name('contributeDistiller');
+
+Route::post('/contribute/spirit', 'SpiritController@createSpirit'); 
+Route::post('/contribute/distiller', 'SpiritController@createDistiller');
